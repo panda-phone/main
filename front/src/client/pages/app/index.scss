@@ -1,0 +1,17 @@
+@import '../../components/styles.scss';
+@import '../../components/fonts.scss';
+
+html, body, #root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.client-app {
+    width: 100%;
+
+    &__container {
+        display: flex;
+        width: 100%;
+    }
+}

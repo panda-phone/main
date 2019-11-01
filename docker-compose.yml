@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+    panda-phone-int:
+        container_name: panda-phone
+        init: true
+        build:
+            context: ./
+            dockerfile: ./dev.dockerfile
+        ports:
+            - '3000:80'
+        environment:
+            - PANDA_PHONE_TELEGRAM_BOT_API_TOKEN=${PANDA_PHONE_TELEGRAM_BOT_API_TOKEN}
+            - PANDA_PHONE_YANDEX_OAUTH_ID=${PANDA_PHONE_YANDEX_OAUTH_ID}
+            - PANDA_PHONE_YANDEX_OAUTH_PASS=${PANDA_PHONE_YANDEX_OAUTH_PASS}
+            - TZ=UTC
+        volumes:
+            - ./node_modules:/usr/local/app/node_modules
+            - ./build:/usr/local/app/build
+            - ./server/configs/db.json:/usr/local/app/server/configs/db.json

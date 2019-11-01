@@ -1,0 +1,59 @@
+@import '../../components/styles.scss';
+
+.good-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 20;
+    background-color: $bg-color;
+
+    &__container {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+    }
+
+    &__controls-container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 32px;
+        right: 32px;
+
+        & .button__container {
+            margin-left: auto;
+        }
+    }
+
+    & .edit-text {
+        margin-top: 12px;
+    }
+
+    & .image-button {
+        display: flex;
+        margin-top: 12px;
+    }
+
+    & .switcher {
+        margin-top: 12px;
+
+        & p {
+            left: -36px;
+        }
+    }
+
+    & .select-box {
+        margin-top: 12px;
+    }
+
+    & .select-box__placeholder,
+    & .edit-text__input-label {
+        left: -36px;
+    }
+
+    & .edit-text__input-label-error,
+    & .select-box__label-error {
+        right: -36px;
+    }
+}

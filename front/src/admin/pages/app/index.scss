@@ -1,0 +1,24 @@
+@import '../../components/styles.scss';
+@import '../../components/fonts.scss';
+
+html, body, #root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-app {
+    width: 100%;
+    display: flex;
+
+    &__container {
+        display: flex;
+        width: calc(100vw - 90px);
+        min-height: calc(100vh - 100px);
+        margin-left: 90px;
+        z-index: 20;
+        background-color: $bg-color;
+        border-radius: 100px 0 0 0;
+        padding: 50px;
+    }
+}

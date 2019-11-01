@@ -1,0 +1,120 @@
+@import '../styles.scss';
+
+.data-table {
+    width: 100%;
+    margin-top: 16px;
+    color: $font-color-header;
+
+    &__container {
+        height: 100%;
+    }
+
+    &__table-content {
+        overflow-y: auto;
+
+        & table {
+            border-collapse: collapse;
+        }
+    }
+
+    &__header-item {
+        text-align: left;
+        padding: 6px 10px;
+        padding-top: 5px;
+        padding-bottom: 3px;
+
+        & h2 {
+            margin: 0;
+            font-size: 14px;
+            font-family: $font-family-montserrat-bold;
+        }
+    }
+
+    &__row {
+        height: 90px;
+
+        &:nth-child(2n) {
+            background: $bg-color;
+        }
+    }
+
+    &__row-item {
+        padding: 10px;
+        min-width: 80px;
+
+        & p {
+            margin: 0;
+            font-size: 13px;
+            font-family: $font-family-montserrat-regular;
+        }
+
+        & a {
+            font-family: $font-family-montserrat-regular;
+            text-decoration: none;
+        }
+    }
+
+    &__row-item_boolean {
+        height: 25px;
+        width: 25px;
+    }
+
+    &__row-item_price-object {
+        display: flex;
+        flex-direction: row;
+
+        & h2 {
+            font-size: 14px;
+            font-family: $font-family-montserrat-bold;
+            margin: 0;
+        }
+
+        & p {
+            font-size: 13px;
+            font-family: $font-family-montserrat-regular;
+            margin: 0;
+            color: #D83562;
+        }
+    }
+
+    &__row-item-good-props {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__row-item-good-props-container {
+        max-width: 250px;
+        display: inline-flex;
+        flex-wrap: wrap;
+
+        & div {
+            display: inline-flex;
+            font-size: 13px;
+            border-radius: 20px;
+            padding: 8px 16px;
+            background: $component-item-bg-color;
+            color: $font-color-header;
+            text-align: center;
+            font-family: $font-family-montserrat-regular;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+    }
+
+    &__row-item-good-props-brand {
+        font-size: 13px;
+        font-family: $font-family-montserrat-bold !important;
+    }
+
+    &__row-item-good-category-data {
+        & .category {
+            font-size: 13px;
+            font-family: $font-family-montserrat-bold;
+        }
+
+        & .subcategory {
+            font-size: 12px;
+            font-family: $font-family-montserrat-regular;
+        }
+    }
+}

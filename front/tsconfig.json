@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2016",
+        "lib": [
+            "dom",
+            "es2016",
+            "es2017"
+        ],
+        "strict": true,
+        "experimentalDecorators": true,
+        "noEmitOnError": true,
+        "pretty": true,
+        "jsx": "react",
+        "baseUrl": "./",
+        "paths": {
+            "admin/*": [
+                "./src/admin/*"
+            ],
+            "client/*": [
+                "./src/client/*"
+            ],
+            "libs/*": [
+                "./src/libs/*"
+            ],
+            "common/*": [
+                "./src/common/*"
+            ]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

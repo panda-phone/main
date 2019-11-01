@@ -1,0 +1,14 @@
+@import '../styles.scss';
+
+.title {
+    width: 100%;
+
+    &__container {
+        width: 100%;
+
+        & h1 {
+            font-family: $font-family-montserrat-bold;
+            color: $font-color-header;
+        }
+    }
+}

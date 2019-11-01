@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2018",
+        "lib": ["es2018"],
+        "allowJs": true,
+
+        "outDir": "../build/server",
+        "rootDir": "./",
+
+        "strict": true,
+        "sourceMap": true,
+        "incremental": false,
+        "pretty": true,
+
+        "resolveJsonModule": true,
+
+        "baseUrl": ".",
+        "paths": {
+            "app/*": [
+                "./src/app/*"
+            ]
+        },
+        "types": [
+            "node",
+            "express",
+            "jest"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

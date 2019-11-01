@@ -1,0 +1,86 @@
+@import '../../components/styles.scss';
+
+.order-page {
+    display: flex;
+    width: 100%;
+    z-index: 20;
+    background-color: $bg-color;
+    flex-direction: column;
+
+    &__container {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 32px;
+        margin-top: 94px;
+    }
+
+    & .paper {
+        display: inline-flex;
+        margin: auto;
+    }
+
+    & .image-button {
+        display: flex;
+        margin-top: 12px;
+    }
+
+    &__form-container {
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__controls-container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 32px;
+        right: 32px;
+
+        & .image-button__container {
+            margin-left: auto;
+        }
+    }
+
+    &__result-price {
+        font-family: $font-family-montserrat-bold;
+        font-size: 23px;
+    }
+
+    &__new-order-item {
+        margin-top: 0 !important;
+
+        & .image-button__container {
+            margin-left: auto;
+        }
+    }
+
+    & .edit-text,
+    & .date-time-picker {
+        margin-top: 12px;
+    }
+
+    & .switcher {
+        margin-top: 12px;
+
+        & p {
+            left: -36px;
+        }
+    }
+
+    & .select-box {
+        margin-top: 12px;
+    }
+
+    & .select-box__placeholder,
+    & .edit-text__input-label,
+    & .date-time-picker__input-label {
+        left: -36px;
+    }
+
+    & .edit-text__input-label-error,
+    & .select-box__label-error {
+        right: -36px;
+    }
+}

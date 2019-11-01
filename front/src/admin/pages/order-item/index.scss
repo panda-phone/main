@@ -1,0 +1,47 @@
+@import '../../components/styles.scss';
+
+.order-item-page {
+    display: flex;
+    width: 100%;
+    z-index: 20;
+    background-color: $bg-color;
+    flex-direction: column;
+
+    &__container {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    & .paper {
+        display: inline-flex;
+        margin: auto;
+    }
+
+    &__form-container {
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+    }
+
+    & .edit-text {
+        margin-top: 12px;
+    }
+
+    & .image-button {
+        display: flex;
+        margin-top: 12px;
+    }
+
+    & .select-box__placeholder,
+    & .edit-text__input-label {
+        left: -36px;
+    }
+
+    & .edit-text__input-label-error,
+    & .select-box__label-error {
+        right: -36px;
+    }
+}

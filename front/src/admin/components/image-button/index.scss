@@ -1,0 +1,45 @@
+@import '../styles.scss';
+
+.image-button {
+    display: inline-flex;
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+        user-select: none;
+        background-color: $primary-color;
+        color: #FFFFFF;
+        border-radius: 5px;
+        padding: 9px 16px;
+        transition: all 120ms;
+
+        &:hover {
+            opacity: .9;
+            box-shadow: 0 5px 30px -10px transparentize(#000000, 0.9);
+        }
+    }
+
+    &__margin {
+        margin-right: 14px;
+    }
+
+    &__icon-container {
+        height: 14px;
+        display: flex;
+
+        & svg {
+            height: 14px;
+            margin: auto 0;
+            fill: #FFFFFF;
+        }
+    }
+
+    & p {
+        margin: 0;
+        height: 14px;
+        line-height: 14px;
+        font-size: 14px;
+        font-family: $font-family-montserrat-regular;
+    }
+}

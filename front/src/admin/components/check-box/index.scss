@@ -1,0 +1,108 @@
+@import '../styles.scss';
+
+.check-box {
+    &__label {
+        font-family: $font-family-montserrat-bold;
+        font-size: 14px;
+        color: $font-color-header;
+        font-weight: 700;
+        user-select: none;
+        margin: 0;
+        margin-bottom: 8px;
+    }
+
+    &__item {
+        margin-top: 16px;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item-label {
+        cursor: pointer;
+        margin: auto;
+        height: 18px;
+        display: flex;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -9px;
+            left: -9px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba($primary-color, .03);
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+
+        & svg {
+            z-index: 1;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke: $component-item-bg-color;
+            stroke-width: 1.5;
+            transform: translate3d(0,0,0);
+            transition: all .2s ease;
+
+            & path {
+                stroke-dasharray: 60;
+                stroke-dashoffset: 0;
+            }
+            & polyline {
+                stroke-dasharray: 22;
+                stroke-dashoffset: 66;
+            }
+        }
+
+        &:hover {
+            &:before {
+                opacity: 1;
+            }
+
+            svg {
+                stroke: $primary-color;
+            }
+        }
+
+        & span {
+            color: $font-color-header;
+            font-family: $font-family-montserrat-light;
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: middle;
+            transform: translate3d(0, 0, 0);
+            padding-left: 8px;
+            cursor: pointer;
+        }
+    }
+
+    &__item {
+        & input {
+            display: none;
+        }
+
+        & input:checked + .check-box__item-label {
+            & svg {
+                stroke: $primary-color;
+
+                & path {
+                    stroke-dashoffset: 60;
+                    transition: all .3s linear;
+                }
+
+                & polyline {
+                    stroke-dashoffset: 42;
+                    transition: all .2s linear;
+                    transition-delay: .15s;
+                }
+            }
+        }
+    }
+}

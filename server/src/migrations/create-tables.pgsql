@@ -1,0 +1,45 @@
+SET TIME ZONE 'UTC';
+CREATE EXTENSION IF NOT EXISTS "citext";
+
+CREATE TABLE IF NOT EXISTS admin (
+    yandex_user_id TEXT UNIQUE NOT NULL,
+    login TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS good (
+    id TEXT PRIMARY KEY,
+    category CITEXT NOT NULL,
+    subcategory CITEXT NOT NULL,
+    original BOOLEAN DEFAULT TRUE NOT NULL,
+    branch CITEXT NOT NULL,
+    price INTEGER NOT NULL,
+    discount SMALLINT NOT NULL DEFAULT 0,
+
+    properties JSONB DEFAULT '{}' NOT NULL,
+    updated TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "order" (
+    id TEXT PRIMARY KEY,
+
+    customer_name CITEXT NOT NULL,
+    customer_phone CITEXT NOT NULL,
+    called BOOLEAN DEFAULT FALSE NOT NULL,
+
+    delivery_address TEXT DEFAULT NULL,
+    delivery_date TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+
+    created TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    resolution_date TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+
+    _resolution_status CITEXT DEFAULT NULL
+);
+
+CREATE TABLE IF NOT EXISTS order_item (
+    id TEXT PRIMARY KEY,
+
+    order_id TEXT REFERENCES "order"(id) ON DELETE RESTRICT NOT NULL,
+    good_id TEXT REFERENCES good(id) ON DELETE RESTRICT NOT NULL,
+
+    serial_number TEXT UNIQUE DEFAULT NULL
+);

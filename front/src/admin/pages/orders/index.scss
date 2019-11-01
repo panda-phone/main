@@ -1,0 +1,26 @@
+@import '../../components/styles.scss';
+
+.orders-page {
+    display: flex;
+    width: 100%;
+    z-index: 20;
+    background-color: $bg-color;
+
+    &__container {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+
+        & .pagination {
+            margin-top: 16px;
+        }
+
+        & .image-button {
+            display: flex;
+
+            & .image-button__container {
+                margin-left: auto;
+            }
+        }
+    }
+}
