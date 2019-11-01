@@ -32,6 +32,7 @@ router
         next();
     })
     .get('/check_access', (_, res) => res.send())
+    .use((_req, _res, next) => setTimeout(next, 500))
     .use('/good', goodRouter)
     .use('/order', orderRouter)
     .use('/order_item', orderItemRouter);
