@@ -97,3 +97,6 @@ docker-push:
 .PHONY: docker-echo
 docker-echo:
 	echo ${DOCKER_HUB}:$(shell $(DOCKER_IMAGE_VERSION))
+
+.PHONY: docker-release
+docker-release: docker-build docker-push
