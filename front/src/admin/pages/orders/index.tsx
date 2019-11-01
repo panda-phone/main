@@ -45,16 +45,19 @@ export class OrdersPage extends React.Component<Props> {
                     <div className={b('container')}>
                         <Title text={locale.orders}/>
                         {this.renderTable()}
-                        <Pagination
-                            limit={this.props.ordersPageModel!.pagination.limit}
-                            offset={this.props.ordersPageModel!.pagination.offset}
-                            total={this.props.ordersPageModel!.pagination.total}
-                            onChange={(offset) => {
-                                this.props.ordersPageModel!.pagination.offset = offset;
-                                this.loadData();
-                                window.scrollTo(0, 0);
-                            }}
-                        />
+                        {
+                            this.props.ordersPageModel!.pagination.total !== 0 &&
+                            <Pagination
+                                limit={this.props.ordersPageModel!.pagination.limit}
+                                offset={this.props.ordersPageModel!.pagination.offset}
+                                total={this.props.ordersPageModel!.pagination.total}
+                                onChange={(offset) => {
+                                    this.props.ordersPageModel!.pagination.offset = offset;
+                                    this.loadData();
+                                    window.scrollTo(0, 0);
+                                }}
+                            />
+                        }
                     </div>
                 }
             </div>

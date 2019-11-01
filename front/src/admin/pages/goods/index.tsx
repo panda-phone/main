@@ -48,16 +48,19 @@ export class GoodsPage extends React.Component<Props> {
                         <Title text={locale.goods}/>
                         {this.renderFilter()}
                         {this.renderTable()}
-                        <Pagination
-                            limit={this.props.goodsPageModel!.pagination.limit}
-                            offset={this.props.goodsPageModel!.pagination.offset}
-                            total={this.props.goodsPageModel!.pagination.total}
-                            onChange={(offset) => {
-                                this.props.goodsPageModel!.pagination.offset = offset;
-                                this.loadData();
-                                window.scrollTo(0, 0);
-                            }}
-                        />
+                        {
+                            this.props.goodsPageModel!.pagination.total !== 0 &&
+                            <Pagination
+                                limit={this.props.goodsPageModel!.pagination.limit}
+                                offset={this.props.goodsPageModel!.pagination.offset}
+                                total={this.props.goodsPageModel!.pagination.total}
+                                onChange={(offset) => {
+                                    this.props.goodsPageModel!.pagination.offset = offset;
+                                    this.loadData();
+                                    window.scrollTo(0, 0);
+                                }}
+                            />
+                        }
                     </div>
                 }
             </div>

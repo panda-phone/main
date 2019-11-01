@@ -79,7 +79,7 @@ fill-db: clean build-server
 		node $(BUILD_DIR)/src/tests/integration/helpers/fill.js
 
 DOCKER_HUB = cr.yandex/crpn0q4tiksugq5qds8d/ubuntu
-get-version = node -p "require('./package.json').name + '_' + require('./package.json').version"
+get-version = node -p "require('./package.json').version"
 DOCKER_IMAGE_VERSION = $(call get-version)
 
 .PHONY: docker-login
@@ -93,10 +93,6 @@ docker-build:
 .PHONY: docker-push
 docker-push:
 	docker push ${DOCKER_HUB}:$(shell $(DOCKER_IMAGE_VERSION))
-
-.PHONY: docker-pull
-docker-pull:
-	docker pull ${DOCKER_HUB}:$(shell $(DOCKER_IMAGE_VERSION))
 
 .PHONY: docker-echo
 docker-echo:
