@@ -47,15 +47,18 @@ export class OrdersPageModel {
                     getRequest(`/api/v1/order/get_list_opened?${params.join('&')}`),
                     getRequest('/api/v1/public/get_consts')
                 ])
-                .then(([response, constResponse]: [AxiosResponse<any>, AxiosResponse<any>]) => {
-                    const {data: {meta, data}} = response;
-                    this.pagination.total = meta.total;
-                    this.data = data;
-                    this.dbConsts = constResponse.data;
-                    resolve();
-                })
-                .catch(reject)
-                .finally(() => this.status = PageStatus.DONE);
+                    .then(([response, constResponse]: [AxiosResponse<any>, AxiosResponse<any>]) => {
+                        const {data: {meta, data}} = response;
+                        this.pagination.total = meta.total;
+                        this.data = data;
+                        this.dbConsts = constResponse.data;
+                        this.status = PageStatus.DONE;
+                        resolve();
+                    })
+                    .catch((error) => {
+                        this.status = PageStatus.FAIL;
+                        reject(error);
+                    });
             });
         });
     }

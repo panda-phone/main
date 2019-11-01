@@ -65,9 +65,14 @@ export class OrderPageModel {
             return new Promise((resolve, reject) => {
                 runInAction(() => {
                     postRequest(`/api/v1/order/create`, data)
-                        .then(resolve)
-                        .catch(reject)
-                        .finally(() => this.status = PageStatus.DONE);
+                        .then(() => {
+                            this.status = PageStatus.DONE;
+                            resolve();
+                        })
+                        .catch((error) => {
+                            this.status = PageStatus.FAIL;
+                            reject(error);
+                        });
                 });
             });
         }
@@ -78,9 +83,14 @@ export class OrderPageModel {
                 delete data.id;
 
                 postRequest(`/api/v1/order/${id}/update`, data)
-                    .then(resolve)
-                    .catch(reject)
-                    .finally(() => this.status = PageStatus.DONE);
+                    .then(() => {
+                        this.status = PageStatus.DONE;
+                        resolve();
+                    })
+                    .catch((error) => {
+                        this.status = PageStatus.FAIL;
+                        reject(error);
+                    });
             });
         });
     }
@@ -91,9 +101,14 @@ export class OrderPageModel {
         return new Promise((resolve, reject) => {
             runInAction(() => {
                 postRequest(`/api/v1/order/${id}/${status}`, {})
-                    .then(resolve)
-                    .catch(reject)
-                    .finally(() => this.status = PageStatus.DONE);
+                    .then(() => {
+                        this.status = PageStatus.DONE;
+                        resolve();
+                    })
+                    .catch((error) => {
+                        this.status = PageStatus.FAIL;
+                        reject(error);
+                    });
             });
         });
     }
@@ -104,9 +119,14 @@ export class OrderPageModel {
         return new Promise((resolve, reject) => {
             runInAction(() => {
                 postRequest(`/api/v1/order_item/${id}/delete`, {})
-                    .then(resolve)
-                    .catch(reject)
-                    .finally(() => this.status = PageStatus.DONE);
+                    .then(() => {
+                        this.status = PageStatus.DONE;
+                        resolve();
+                    })
+                    .catch((error) => {
+                        this.status = PageStatus.FAIL;
+                        reject(error);
+                    });
             });
         });
     }

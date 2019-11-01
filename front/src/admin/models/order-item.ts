@@ -51,9 +51,14 @@ export class OrderItemPageModel {
                         ...data,
                         order_id: orderId
                     })
-                        .then(resolve)
-                        .catch(reject)
-                        .finally(() => this.status = PageStatus.DONE);
+                        .then(() => {
+                            this.status = PageStatus.DONE;
+                            resolve();
+                        })
+                        .catch((error) => {
+                            this.status = PageStatus.FAIL;
+                            reject(error);
+                        });
                 });
             });
         }
@@ -65,9 +70,14 @@ export class OrderItemPageModel {
                 const id = this.data.id;
 
                 postRequest(`/api/v1/order_item/${id}/update`, data)
-                    .then(resolve)
-                    .catch(reject)
-                    .finally(() => this.status = PageStatus.DONE);
+                    .then(() => {
+                        this.status = PageStatus.DONE;
+                        resolve();
+                    })
+                    .catch((error) => {
+                        this.status = PageStatus.FAIL;
+                        reject(error);
+                    });
             });
         });
     }

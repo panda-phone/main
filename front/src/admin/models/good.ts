@@ -15,7 +15,6 @@ export class GoodPageModel {
         return new Promise((resolve, reject) => {
             runInAction(() => {
                 this.status = PageStatus.LOADING;
-
                 Promise.all([
                     this.isNewGood ? Promise.resolve({data: {}} as any) : getRequest(`/api/v1/good/${id}/get`),
                     getRequest('/api/v1/public/get_consts')
@@ -41,9 +40,14 @@ export class GoodPageModel {
                     this.status = PageStatus.LOADING;
 
                     postRequest(`/api/v1/good/create`, data)
-                        .then(resolve)
-                        .catch(reject)
-                        .finally(() => this.status = PageStatus.DONE);
+                        .then(() => {
+                            this.status = PageStatus.DONE;
+                            resolve();
+                        })
+                        .catch((error) => {
+                            this.status = PageStatus.FAIL;
+                            reject(error);
+                        });
                 });
             });
         }
@@ -57,9 +61,14 @@ export class GoodPageModel {
                 delete data.updated;
 
                 postRequest(`/api/v1/good/${id}/update`, data)
-                    .then(resolve)
-                    .catch(reject)
-                    .finally(() => this.status = PageStatus.DONE);
+                    .then(() => {
+                        this.status = PageStatus.DONE;
+                        resolve();
+                    })
+                    .catch((error) => {
+                        this.status = PageStatus.FAIL;
+                        reject(error);
+                    });
             });
         });
     }
@@ -70,9 +79,14 @@ export class GoodPageModel {
                 this.status = PageStatus.LOADING;
 
                 postRequest(`/api/v1/good/${id}/update_branch`, {branch})
-                    .then(resolve)
-                    .catch(reject)
-                    .finally(() => this.status = PageStatus.DONE);
+                    .then(() => {
+                        this.status = PageStatus.DONE;
+                        resolve();
+                    })
+                    .catch((error) => {
+                        this.status = PageStatus.FAIL;
+                        reject(error);
+                    });
             });
         });
     }

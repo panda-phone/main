@@ -91,10 +91,13 @@ export class GoodsPageModel {
                     this.pagination.total = meta.total;
                     this.data = data;
                     this.initFilter(constResponse.data);
+                    this.status = PageStatus.DONE;
                     resolve();
                 })
-                .catch(reject)
-                .finally(() => this.status = PageStatus.DONE);
+                .catch((error) => {
+                    this.status = PageStatus.FAIL;
+                    reject(error);
+                });
             });
         });
     }
